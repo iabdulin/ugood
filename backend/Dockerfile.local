@@ -1,0 +1,32 @@
+# backend/Dockerfile (FOR DEVELOPMENT)
+
+# Use an official Ruby image (match your project's .ruby-version if possible)
+FROM ruby:3.4.1
+
+# Install necessary dependencies
+# - build-essential: For compiling native extensions
+# - libpq-dev: For PostgreSQL adapter (use default-libmysqlclient-dev for MySQL)
+# - nodejs & yarn/npm: For Rails asset pipeline (Webpacker/Propshaft/jsbundling-rails)
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn
+
+# Set the working directory inside the container
+WORKDIR /backend
+
+# Install Bundler
+RUN gem install bundler
+
+# Copy Gemfile and Gemfile.lock
+COPY Gemfile Gemfile.lock ./
+
+# Install gems (including development and test groups)
+RUN bundle install
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Expose port 3000 to the Docker network (Rails default)
+EXPOSE 3000
+
+# The main command to run when the container starts for development
+# -b 0.0.0.0 binds Rails to all interfaces inside the container, making it accessible
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
