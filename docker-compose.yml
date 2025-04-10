@@ -44,6 +44,7 @@ services:
       - /app/node_modules
     ports:
       - "5173:5173" # Vite dev server
+      - "9323:9323" # Playwright html report
     environment:
       REACT_APP_API_URL: http://localhost:3000/api/v1
       CHOKIDAR_USEPOLLING: "true" # Helps with hot-reloading in some Docker setups
