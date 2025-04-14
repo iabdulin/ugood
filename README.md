@@ -110,6 +110,21 @@ Example output:
    - Create separate staging and production environments
    - Implement blue/green deployment for zero-downtime updates
 
+## Linting
+
+Backend (Rubocop): `docker-compose exec backend rubocop`
+Frontend (TS & ESLint): `docker-compose exec frontend npm run lint`
+
+## GitHub Actions
+
+- Linting: Rubocop & TS/ESLint
+[![Lint (Rubocop & TS/ESLint)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml)
+
+- RSpec tests
+[![RSpec Tests](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml)
+
+- E2E tests with Playwright
+[![Playwright E2E Tests](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml)
 
 ## Tests Outputs
 ```bash
