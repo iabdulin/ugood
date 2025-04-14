@@ -2,19 +2,16 @@
 
 A full-stack application for submitting and managing mental health surveys.
 
+![ugood](https://github.com/user-attachments/assets/855d565f-9e5b-4d3d-9ead-630c3fab68df)
+
 ## Screenshots
 
-### Empty Form
-TODO
-
 ### Form with Validation Errors
-TODO
+![image](https://github.com/user-attachments/assets/f9bbc01a-62d5-47ca-a87b-9cd0333bc322)
 
-### Submission Results
-TODO
+### Admin Interface with Stats (Total, Average, Stress Level Distribution, Trend)
+![image](https://github.com/user-attachments/assets/d90c59a2-8b08-446c-8d90-f114ed05d031)
 
-### Admin Page
-TODO
 
 ## Setup
 1) You need to have Docker installed.
