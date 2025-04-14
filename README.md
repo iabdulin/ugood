@@ -15,12 +15,12 @@ A full-stack application for submitting and managing mental health surveys.
 ## Setup
 1) You need to have Docker installed.
 2) Clone the repository.
-3) Run `docker-compose build` to build the containers.
-4) Run `docker-compose up -d` to start the services.
-5) Run `docker-compose exec backend rails db:create` to create the database.
-6) Run `docker-compose exec backend rails db:migrate` to migrate the database.
-7) ⚠️ Important: You need to have a .env file in the root directory for Rails Active Record Encryption to work.
-Download it here: https://gist.github.com/iabdulin/81244e0442b2cd517b17b82831c3f8bc (⚠️ the file is shared to simplify the review process)
+3) ⚠️ Important: You need to have a .env file in the root directory for Rails Active Record Encryption to work.
+You can simply copy .env.example file: `cp backend/.env.example backend/.env`
+4) Run `docker-compose build` to build the containers.
+5) Run `docker-compose up -d` to start the services.
+6) Run `docker-compose exec backend rails db:create` & `docker-compose exec -e RAILS_ENV=test backend rails db:create` to create the databases. 
+7) Run `docker-compose exec backend rails db:migrate` to migrate the database.
 
 If you want to run the frontend locally:
 1) `cd frontend`
@@ -32,7 +32,7 @@ Run `docker-compose up -d` to start the services.
 
 - Frontend: `http://127.0.0.1:5173/`
 - Backend: `http://localhost:3000/`
-- Backend tests (Rspec): `docker-compose exec backend bundle exec rspec`
+- Backend tests (Rspec): `docker-compose exec backend bundle exec rspec -f d`
 - End-to-End tests with Playwright headless in the docker container: `docker-compose exec frontend npm run test:e2e`
 - E2E tests in headed mode locally: `cd frontend && npx playwright test --headed`
 - Alternative way to run E2E tests: Use VSCode Playwright extension.
