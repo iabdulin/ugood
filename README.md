@@ -5,16 +5,16 @@ A full-stack application for submitting and managing mental health surveys.
 ## Screenshots
 
 ### Empty Form
-[Screenshot placeholder: Survey form in its initial state]
+TODO
 
 ### Form with Validation Errors
-[Screenshot placeholder: Survey form displaying validation errors]
+TODO
 
 ### Submission Results
-[Screenshot placeholder: Successful submission confirmation screen]
+TODO
 
 ### Admin Page
-[Screenshot placeholder: Admin dashboard displaying survey submissions]
+TODO
 
 ## Setup
 1) You need to have Docker installed.
@@ -24,7 +24,7 @@ A full-stack application for submitting and managing mental health surveys.
 5) Run `docker-compose exec backend rails db:create` to create the database.
 6) Run `docker-compose exec backend rails db:migrate` to migrate the database.
 7) ⚠️ Important: You need to have a .env file in the root directory for Rails Active Record Encryption to work.
-Download it here: https://gist.github.com/iabdulin/81244e0442b2cd517b17b82831c3f8bc
+Download it here: https://gist.github.com/iabdulin/81244e0442b2cd517b17b82831c3f8bc (⚠️ the file is shared to simplify the review process)
 
 If you want to run the frontend locally:
 1) `cd frontend`
@@ -73,6 +73,7 @@ Example output:
 - Admin API routes are not protected (should be protected in production)
 - Access logging and audit trails are required for HIPAA compliance, but are not implemented
 - Better error handling and logging is required for production
+- Image-charts.com is used for the "Stress Level" chart. This is ok for an assignment but in production it should be replaced to not leak data to 3rd parties.
 
 
 ## Architecture
