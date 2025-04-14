@@ -4,11 +4,6 @@ A full-stack application for submitting and managing mental health surveys.
 
 ![ugood](https://github.com/user-attachments/assets/855d565f-9e5b-4d3d-9ead-630c3fab68df)
 
-## Screenshots
-
-### Form with Validation Errors
-![image](https://github.com/user-attachments/assets/f9bbc01a-62d5-47ca-a87b-9cd0333bc322)
-
 ### Admin Interface with Stats (Total, Average, Stress Level Distribution, Trend)
 ![image](https://github.com/user-attachments/assets/d90c59a2-8b08-446c-8d90-f114ed05d031)
 
@@ -38,6 +33,8 @@ Run `docker-compose up -d` to start the services.
 - E2E tests in headed mode locally: `cd frontend && npx playwright test --headed`
 - Alternative way to run E2E tests: Use VSCode Playwright extension.
 
+Note: Remember to rebuild the frontend & backend after adding new dependencies.
+
 ## Database Connection
 
 ```
@@ -50,18 +47,24 @@ localhost:5433 postgres / password
 
 Rspec is used to have unit tests for the SurveyResponse model, StatsService and the SurveyResponsesController.
 
-> Finished in 0.18973 seconds (files took 0.95999 seconds to load)
-> 13 examples, 0 failures
-
 ### E2E Tests
 
 Assignment instructions had: "Unit Tests (Jest): Write unit tests using Jest for the frontend form."
 I chose Playwright instead of Jest because it can do both unit tests with mocks and end-to-end tests with real browser interaction.
 I also prefer using Playwright during the development process, using it instead of the browser to get the application to the state I want.
 
-Example output:
-> Running 30 tests using 1 worker
-> 30 passed (31.5s)
+### Linting
+
+- Backend (Rubocop): `docker-compose exec backend rubocop`
+- Frontend (TS & ESLint): `docker-compose exec frontend npm run lint`
+
+### GitHub Actions
+
+Can be improved by adding more caching to docker layers to speed up builds. Test coverage reports are not generated.
+
+- [![Lint (Rubocop & TS/ESLint)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml)
+- [![RSpec Tests](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml)
+- [![Playwright E2E Tests](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml)
 
 
 ## Assumptions and Simplifications
@@ -87,18 +90,13 @@ Example output:
 - The form is validated with custom validations (all fields are required).
 - The form is submitted to the backend with a POST request.
 - The response is displayed on the same page and admin subpage is updated with the new submission.
+- Dockerizing the frontend was not necessary but included for practice
+- Frontend container can communicate with backend container (to be able to run playwright tests in the frontend container)
 
 ### Active Record Encryption
 - SurveyResponses has feeling and comments fields encrypted with default Rails encryption
 - .env file is required to be in the root directory (check setup instructions above)
 - NOTE: can't query encrypted fields with non-deterministic encryption (default)
-- Download it here: ____TODO____
-
-### Setup Notes
-
-- Dockerizing the frontend is not necessary but included for practice
-- Remember to rebuild the frontend & backend after adding new dependencies
-- Frontend container can communicate with backend container (to be able to run playwright tests in the frontend container)
 
 ## Deployment Strategy
 
@@ -109,22 +107,6 @@ Example output:
    - Set up automated testing and deployment using GitHub Actions, CircleCI, or similar
    - Create separate staging and production environments
    - Implement blue/green deployment for zero-downtime updates
-
-## Linting
-
-Backend (Rubocop): `docker-compose exec backend rubocop`
-Frontend (TS & ESLint): `docker-compose exec frontend npm run lint`
-
-## GitHub Actions
-
-- Linting: Rubocop & TS/ESLint
-[![Lint (Rubocop & TS/ESLint)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml)
-
-- RSpec tests
-[![RSpec Tests](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml)
-
-- E2E tests with Playwright
-[![Playwright E2E Tests](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml)
 
 ## Tests Outputs
 ```bash
