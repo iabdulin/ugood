@@ -2,6 +2,10 @@
 
 A full-stack application for submitting and managing mental health surveys.
 
+[![Lint (Rubocop & TS/ESLint)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/lint.yml)
+[![RSpec Tests](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/rspec.yml)
+[![Playwright E2E Tests](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml/badge.svg)](https://github.com/iabdulin/ugood/actions/workflows/playwright.yml)
+
 ![ugood](https://github.com/user-attachments/assets/855d565f-9e5b-4d3d-9ead-630c3fab68df)
 
 ### Admin Interface with Stats (Total, Average, Stress Level Distribution, Trend)
