@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   scope path: '/api/v1' do
     resources :survey_responses, only: [:create]
+
+    get '/admin/submissions', to: 'admin#submissions'
+    get '/admin/stats', to: 'admin#stats'
+
+    unless Rails.env.production?
+      delete '/admin/delete_all', to: 'admin#delete_all'
+      post '/admin/generate_submissions', to: 'admin#generate_submissions'
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
