@@ -20,6 +20,6 @@ class SurveyResponsesController < ApplicationController
 
   def whitelisted_survey_response_params
     # NOTE: explicitly list allowed params to avoid leaking sensitive data
-    [:id, :feeling, :comments, :stress_level, :created_at]
+    [ :id, :feeling, :comments, :stress_level, :created_at ]
   end
 end

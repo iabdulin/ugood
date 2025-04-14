@@ -24,7 +24,7 @@ class AdminController < ApplicationController
   def delete_all
     raise "Doesn't work in production" if Rails.env.production?
     SurveyResponse.delete_all
-    render json: { message: 'All survey responses deleted' }
+    render json: { message: "All survey responses deleted" }
   end
 
   # Generates sample survey responses for the last 180 days
@@ -34,7 +34,7 @@ class AdminController < ApplicationController
   # @return [JSON] confirmation message
   def generate_submissions
     raise "Doesn't work in production" if Rails.env.production?
-    feelings = ['Happy', 'Sad', 'Anxious', 'Excited', 'Tired', 'Calm', 'Frustrated', 'Energetic']
+    feelings = [ "Happy", "Sad", "Anxious", "Excited", "Tired", "Calm", "Frustrated", "Energetic" ]
 
     # Generate for the last 180 days, every 2 days
     days_count = 0
@@ -52,6 +52,6 @@ class AdminController < ApplicationController
       days_count += 1
     end
 
-    render json: { message: 'Survey responses generated for the last 180 days, every 2 days' }
+    render json: { message: "Survey responses generated for the last 180 days, every 2 days" }
   end
 end

@@ -30,7 +30,7 @@ class StatsService
       FROM survey_responses"
     ).first
 
-    result['avg_stress'].to_f.round(1)
+    result["avg_stress"].to_f.round(1)
   end
 
   # Calculates the distribution of stress levels

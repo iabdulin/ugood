@@ -20,7 +20,7 @@ RSpec.describe StatsService, type: :service do
         SurveyResponse.create!(feeling: 'Worried', stress_level: '4', comments: 'Test comment 4', created_at: 120.days.ago),
         SurveyResponse.create!(feeling: 'Stressed', stress_level: '5', comments: 'Test comment 5', created_at: 20.days.ago),
         SurveyResponse.create!(feeling: 'Relaxed', stress_level: '2', comments: 'Test comment 4', created_at: 130.days.ago),
-        SurveyResponse.create!(feeling: 'Relaxed', stress_level: '2', comments: 'Test comment 4', created_at: 130.days.ago),
+        SurveyResponse.create!(feeling: 'Relaxed', stress_level: '2', comments: 'Test comment 4', created_at: 130.days.ago)
       ]
     end
 
@@ -68,7 +68,7 @@ RSpec.describe StatsService, type: :service do
 
       # Check the format and content
       response = stats[:last_90_days_responses].first
-      expect(response.keys.sort).to eq(['created_at', 'stress_level'])
+      expect(response.keys.sort).to eq([ 'created_at', 'stress_level' ])
     end
   end
 end
