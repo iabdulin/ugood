@@ -1,4 +1,4 @@
-import { type SurveyResponse } from "../models/SurveyResponse"
+import { type SurveyResponse } from "@/models/SurveyResponse"
 
 export const SubmissionResult = ({ result }: { result: SurveyResponse }) => {
   const handleRefresh = () => {
