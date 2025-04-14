@@ -7,9 +7,9 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-ugood_dev} # Use .env var or default
-      POSTGRES_USER: ${POSTGRES_USER:-postgres} # Use .env var or default
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password} # Use .env var or default
+      POSTGRES_DB: ugood_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     ports:
       - "5433:5432"
 
@@ -26,9 +26,8 @@ services:
     depends_on:
       - db # Wait for the db service to start (basic check)
     environment:
-      RAILS_ENV: development
-      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-ugood_dev}
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY} # Needed if using Rails credentials
+      DATABASE_URL: postgresql://postgres:password@db:5432/ugood_development
+      DATABASE_TEST_URL: postgresql://postgres:password@db:5432/ugood_test
     # Add stdin_open and tty for debugging with tools like 'binding.pry'
     stdin_open: true
     tty: true
