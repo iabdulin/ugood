@@ -1,0 +1,32 @@
+name: Lint (Rubocop & TS/ESLint)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and start containers
+        run: |
+          docker compose build
+          docker compose up -d
+
+      - name: Run Rubocop
+        run: docker compose exec backend rubocop
+
+      - name: Run TS & ESLint
+        run: docker compose exec frontend npm run lint
+
+      - name: Cleanup
+        if: always()
+        run: docker compose down -v
