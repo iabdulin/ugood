@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { SurveyForm } from '@/pages/SurveyForm/'
 import { SubmissionResult } from '@/pages/SurveyForm/SubmissionResult'
+import { AdminPage } from '@/pages/AdminPage/'
 import { SurveyResponse, SurveySubmission } from '@/models/SurveyResponse'
 import { formAPI } from '@/api'
 
@@ -30,7 +31,14 @@ function App() {
       { result && <SubmissionResult result={result}/>}
       { !result && <SurveyForm onSubmit={handleSubmit}/>}
       { error && <div className='text-red-500'>{error}</div>}
+
+      <div className='mt-6'>
+        {/* Admin Page is here for simplicity */}
+        <hr className='my-6 border-t border-gray-200' />
+        <p className='text-sm text-gray-500'>⚠️ Admin page is here for simplicity. It should be protected and hidden from users.</p>
+        <AdminPage key={refreshAdminPageKey} /> {/* key is used to refresh the page when the user submits a new survey */}
       </div>
+    </div>
   )
 }
 

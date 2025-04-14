@@ -4,6 +4,7 @@ export const API_URL =
   : import.meta.env.VITE_APP_API_URL
 
 import { SurveyResponse, SurveySubmission } from './models/SurveyResponse'
+import { Stats } from './models/Stats'
 
 const makeRequest = async <T>(
   url: string,
@@ -37,5 +38,27 @@ export const formAPI = {
         survey_response: surveySubmission
       })
     })
+  }
+}
+
+export const adminAPI = {
+  getSubmissions: async () => {
+    return makeRequest<SurveyResponse[]>(`${API_URL}/admin/submissions`)
+  },
+
+  deleteAll: async () => {
+    return makeRequest(`${API_URL}/admin/delete_all`, {
+      method: 'DELETE'
+    })
+  },
+
+  generateSubmissions: async () => {
+    return makeRequest(`${API_URL}/admin/generate_submissions`, {
+      method: 'POST'
+    })
+  },
+
+  getStats: async (): Promise<Stats> => {
+    return makeRequest<Stats>(`${API_URL}/admin/stats`)
   }
 }

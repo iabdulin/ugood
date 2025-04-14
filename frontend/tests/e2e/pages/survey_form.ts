@@ -16,7 +16,7 @@ export class SurveyForm {
   }
 
   async submit() {
-    await this.page.click('button[name="submit"]')
+    await this.page.locator('button[name="submit"]').click()
   }
 
   getErrorMessage(errorKey: string) {
