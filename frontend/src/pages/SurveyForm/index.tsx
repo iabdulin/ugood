@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { SurveySubmission } from "../../models/SurveyResponse"
-import { stressLevels } from '../../models/StressLevels'
-import { ErrorMessage } from "./ErrorMessage"
+import { SurveySubmission } from "@/models/SurveyResponse"
+import { stressLevels } from "@/models/StressLevels"
+import { ErrorMessage } from "@/pages/SurveyForm/ErrorMessage"
 
 type SurveyFormProps = {
   onSubmit: (result: SurveySubmission) => void

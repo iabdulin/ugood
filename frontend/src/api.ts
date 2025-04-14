@@ -3,8 +3,8 @@ export const API_URL =
   ? import.meta.env.VITE_APP_BACKEND_CONTAINER_URL
   : import.meta.env.VITE_APP_API_URL
 
-import { SurveyResponse, SurveySubmission } from './models/SurveyResponse'
-import { Stats } from './models/Stats'
+import { SurveyResponse, SurveySubmission } from '@/models/SurveyResponse'
+import { Stats } from '@/models/Stats'
 
 const makeRequest = async <T>(
   url: string,
