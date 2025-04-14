@@ -46,7 +46,9 @@ services:
       - "5173:5173" # Vite dev server
       - "9323:9323" # Playwright html report
     environment:
-      REACT_APP_API_URL: http://localhost:3000/api/v1
+      VITE_APP_API_URL: http://localhost:3000/api/v1
+      VITE_APP_BACKEND_CONTAINER_URL: http://backend:3000/api/v1
+      VITE_APP_FRONTEND_CONTAINER_URL: http://frontend:5173
       CHOKIDAR_USEPOLLING: "true" # Helps with hot-reloading in some Docker setups
     depends_on:
       - backend # Optional: Wait for backend (doesn't guarantee API is ready)

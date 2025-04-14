@@ -1,4 +1,8 @@
-export const API_URL = import.meta.env.VITE_APP_API_URL
+export const API_URL =
+  window.location.hostname.includes('frontend')
+  ? import.meta.env.VITE_APP_BACKEND_CONTAINER_URL
+  : import.meta.env.VITE_APP_API_URL
+
 import { SurveyResponse, SurveySubmission } from './models/SurveyResponse'
 
 const makeRequest = async <T>(
